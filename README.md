@@ -1,1 +1,3 @@
 Primeiras orientacoes
+
+- Clonar repositorio
