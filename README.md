@@ -1,10 +1,10 @@
-# 🔥 Chat da FURIA CS2 — Projeto Front-End
+# Chat da FURIA CS2 — Projeto Front-End
 
-Este é um mini chat temático da FURIA Esports feito com HTML, CSS e JavaScript puro. A ideia é simples: uma interface estilizada, com respostas automáticas do bot, sons customizados e um toque da identidade visual da FURIA.
+Este é um mini chat temático da FURIA Esports feito com HTML, CSS e JavaScript puro, a ideia é simples: uma interface estilizada, com respostas automáticas do bot, sons customizados e um toque da identidade visual da FURIA eSports!
 
 ---
 
-## ✅ Primeiras orientações
+## Primeiras orientações
 
 ### 1. Clonar o repositório
 
@@ -18,8 +18,8 @@ cd chat-furia-cs
 ## Como rodar o projeto
 
 1. Não tem segredo: o projeto é 100% client-side.
-2. Basta abrir o arquivo `index.html` no navegador (pode dar dois cliques ou abrir com VS Code + Live Server).
-3. Pronto, o chat já estará funcionando localmente.
+2. Basta abrir o arquivo `index.html` no navegador (pode dar dois cliques ou abrir com VS Code).
+3. O chat já estará funcionando localmente.
 
 ---
 
@@ -43,28 +43,28 @@ cd chat-furia-cs
 
 ---
 
-## 🗂 Estrutura de Arquivos
+## Estrutura de Arquivos
 
 ```bash
 chat-furia-cs/
 │
 ├── index.html            # Página principal
 ├── headshot.mp3          # Áudio de efeito
-├── furia-resultados.html # (Opcional) página de resultados
+├── furia-resultados.html # Página de resultados (opcional)
 └── README.md             # Este arquivo
 ```
 
 ---
 
-## 🧾 Comentários sobre o código
+## Comentários sobre o código
 
-> O projeto está todo comentado de forma **natural e humana**, direto no HTML, CSS e JS.  
+> O projeto está inteiramente comentado direto no HTML, CSS e JS.  
 > A ideia é que qualquer pessoa que abra o código entenda rapidamente o que está rolando, sem precisar de documentação técnica chata.
 
 Exemplo de comentário usado no projeto:
 
 ```js
-// Se o usuário digitar "jogo", o bot responde com a próxima partida
+// Se o usuário digitar "jogo" ou "partida", o bot responde com a próxima partida
 if (msg.includes('jogo') || msg.includes('partida')) {
   return 'O próximo confronto da FURIA é contra a NAVI no sábado às 18h! 🔥';
 }
@@ -72,7 +72,7 @@ if (msg.includes('jogo') || msg.includes('partida')) {
 
 ---
 
-## 🔊 Créditos e Inspiração
+## Créditos e Inspiração
 
 - Logo oficial da FURIA: [Wikipédia](https://pt.wikipedia.org/wiki/Furia_Esports)
 - Áudio `headshot.mp3`: qualquer efeito sonoro leve (pode ser customizado)
@@ -80,9 +80,9 @@ if (msg.includes('jogo') || msg.includes('partida')) {
 
 ---
 
-## 🤝 Contribuindo
+## Contribuindo...
 
-Quer melhorar o bot? Adicionar integração com API real da HLTV? Fica à vontade!
+Quer melhorar o bot? Adicionar integração com API real da HLTV? Fique à vontade
 
 1. Fork o projeto
 2. Crie sua branch com a melhoria:
@@ -94,10 +94,10 @@ Quer melhorar o bot? Adicionar integração com API real da HLTV? Fica à vontad
    git commit -m 'feat: nova resposta do bot'
    git push origin minha-feature
    ```
-4. Abre um pull request :)
+4. Abre um pull request :))
 
 ---
 
-## 📸 Screenshot
+## Screenshot
 
-> (Adicione aqui uma imagem do projeto rodando. Pode usar o atalho no VS Code: botão direito no navegador → “Salvar como imagem”.)
+> (Adicione aqui uma imagem do projeto rodando. (pode usar o atalho no VS Code)
