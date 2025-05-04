@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<!-- Define o tipo de documento como HTML5 e o idioma como português brasileiro -->
+
 <head>
   <meta charset="UTF-8">
   <title>Chat FURIA CS</title>
+  <!-- Define o charset para suportar acentuação e o título da aba do navegador -->
   <style>
+    /* Estilo base da página */
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #000000, #1a1a1a);
+      background: linear-gradient(to bottom, #000000, #1a1a1a); /* Gradiente escuro vertical */
       color: #ffffff;
       display: flex;
       justify-content: center;
@@ -15,6 +19,7 @@
       margin: 0;
     }
 
+    /* Container principal do chat */
     .chat-container {
       width: 420px;
       background-color: #111;
@@ -24,6 +29,7 @@
       overflow: hidden;
     }
 
+    /* Cabeçalho com título e logo */
     .chat-header {
       background-color: #111;
       color: #ffffff;
@@ -35,6 +41,7 @@
       box-shadow: 0 0 10px #ffffff22 inset;
     }
 
+    /* Estilização do logo no canto do header */
     .chat-header img {
       position: absolute;
       left: 10px;
@@ -43,6 +50,7 @@
       filter: drop-shadow(0 0 2px #fff);
     }
 
+    /* Área onde aparecem as mensagens */
     .chat-messages {
       height: 300px;
       overflow-y: auto;
@@ -53,6 +61,7 @@
       background-color: #181818;
     }
 
+    /* Estilo base das mensagens */
     .message {
       padding: 10px;
       border-radius: 10px;
@@ -60,23 +69,27 @@
       box-shadow: 0 0 8px #ffffff22;
     }
 
+    /* Mensagens do bot (lado esquerdo, tom escuro) */
     .bot {
       background-color: #333;
       align-self: flex-start;
       color: #f0f0f0;
     }
 
+    /* Mensagens do usuário (lado direito, fundo claro) */
     .user {
       background-color: #ffffff;
       color: #000;
       align-self: flex-end;
     }
 
+    /* Área de input + botão */
     .chat-input {
       display: flex;
       border-top: 1px solid #333;
     }
 
+    /* Campo de entrada de texto */
     .chat-input input {
       flex-grow: 1;
       padding: 10px;
@@ -85,6 +98,7 @@
       color: white;
     }
 
+    /* Botão de envio */
     .chat-input button {
       background-color: #ffffff;
       color: #000;
@@ -100,6 +114,7 @@
       background-color: #eaeaea;
     }
 
+    /* Link para outra página com resultados e próximos jogos */
     .open-results {
       display: block;
       text-align: center;
@@ -117,57 +132,72 @@
     }
   </style>
 </head>
+
 <body>
+
+<!-- Estrutura HTML do chatbot -->
 
 <div class="chat-container">
   <div class="chat-header">
     <img src="https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png" alt="FURIA">
     🔥 Chat da FURIA CS2 🔥
   </div>
+
+  <!-- Área onde as mensagens vão aparecer dinamicamente -->
   <div class="chat-messages" id="chatMessages">
     <div class="message bot">Fala, FURIOSO! Em que posso ajudar hoje? 💡🖤</div>
   </div>
+
+  <!-- Campo de entrada de mensagem + botão de envio -->
   <div class="chat-input">
     <input type="text" id="userInput" placeholder="Digite sua pergunta...">
     <button onclick="sendMessage()">Enviar</button>
   </div>
+
+  <!-- Link externo para outra página de resultados -->
   <a href="furia-resultados.html" target="_blank" class="open-results">Ver Resultados & Próximos Jogos</a>
 </div>
 
+<!-- Áudio a ser tocado em certas interações (efeito de headshot) -->
 <audio id="headshot" src="headshot.mp3" preload="auto"></audio>
 
+<!-- Script com lógica do chat -->
 <script>
+  // Função chamada ao enviar uma mensagem
   function sendMessage() {
     const input = document.getElementById('userInput');
     const message = input.value.trim();
-    if (!message) return;
+    if (!message) return; // ignora mensagens vazias
 
-    input.value = '';
-    appendMessage('user', message);
+    input.value = ''; // limpa o campo de entrada
+    appendMessage('user', message); // adiciona a mensagem do usuário
 
-    const reply = getBotReply(message.toLowerCase());
-    appendMessage('bot', reply, true);
+    const reply = getBotReply(message.toLowerCase()); // gera resposta do bot
+    appendMessage('bot', reply, true); // adiciona resposta
 
+    // Toca o som de headshot ao enviar mensagem
     const sound = document.getElementById('headshot');
-    sound.volume= 0.1; //volume do som do hs
+    sound.volume = 0.1;
     sound.currentTime = 0;
     sound.play().catch(e => console.warn("Erro ao tocar o som:", e));
   }
 
+  // Função que adiciona mensagem no chat (HTML seguro por padrão)
   function appendMessage(sender, content, isHTML = false) {
     const chat = document.getElementById('chatMessages');
     const div = document.createElement('div');
     div.className = 'message ' + sender;
     div.innerHTML = isHTML ? content : content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     chat.appendChild(div);
-    chat.scrollTop = chat.scrollHeight;
+    chat.scrollTop = chat.scrollHeight; // rola para o final
   }
 
+  // Lógica de respostas automáticas do bot dependendo da pergunta do usuário.
   function getBotReply(msg) {
     if (msg.includes('jogo') || msg.includes('partida')) {
       return 'O próximo confronto da FURIA é contra a NAVI no sábado às 18h! 🔥';
     } else if (msg.includes('escalação') || msg.includes('time')) {
-      return 'A escalação atual da FURIA é: KSCERATO, yuurih, arT, chelo e FalleN. 🐾';
+      return 'A escalação atual da FURIA é: FalleN, Molodoy, Yuurih, Yekindar e Kscerato🐾';
     } else if (msg.includes('camisa') || msg.includes('loja') || msg.includes('produtos')) {
       return 'Você pode comprar produtos oficiais da FURIA clicando <a href="https://www.furia.gg/" target="_blank" style="color: #fff; text-decoration: underline;">aqui</a> 👕🔥';
     } else if (msg.includes('história') || msg.includes('fundação')) {
@@ -177,6 +207,7 @@
     }
   }
 
+  // Permite o envio da mensagem pressionando Enter
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('userInput').addEventListener('keydown', e => {
       if (e.key === 'Enter') sendMessage();
